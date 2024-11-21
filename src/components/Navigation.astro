@@ -1,0 +1,27 @@
+---
+import siteConfig from '@data/site-config';
+import NavLink from '@components/NavLink.astro';
+const navLinks = siteConfig.headerNavLinks || [];
+---
+
+<nav class="my-auto w-full">
+  {
+    (
+      <div class="flex items-center justify-between">
+        <ul id="menu-items" class="menu flex gap-6">
+          {navLinks.length > 0 &&
+            navLinks.map((link) => (
+              <li class="py-1">
+                <NavLink
+                  class="text-main font-serif text-xl hover:underline hover:decoration-1 hover:underline-offset-2 md:text-base"
+                  href={link.href}
+                >
+                  {link.text}
+                </NavLink>
+              </li>
+            ))}
+        </ul>
+      </div>
+    )
+  }
+</nav>

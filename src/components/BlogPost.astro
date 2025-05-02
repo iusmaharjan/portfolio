@@ -1,5 +1,16 @@
 ---
-const { url, title } = Astro.props;
+const { url, title, description } = Astro.props;
 ---
 
-<li><a href={url}>{title}</a></li>
+<li>
+  <a href={url}>
+    <div class="order-b flex flex-col border-b py-8">
+      <h1 class="text-main mb-2 text-xl md:text-lg">
+        {title}
+      </h1>
+      <p class="text-main text-xl md:text-base">
+        {description}
+      </p>
+    </div>
+  </a>
+</li>

@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import DevNote from '@components/DevNote.astro';
+const devNotes = await getCollection('devnotes');
+const title = 'Developer Notes';
+---
+
+<BaseLayout title={title}>
+  <ul>
+    {
+      devNotes.map((note) => (
+        <DevNote
+          url={`/dev-notes/${note.id}`}
+          title={note.data.title}
+          description={note.data.description}
+        />
+      ))
+    }
+  </ul>
+</BaseLayout>

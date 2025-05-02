@@ -3,12 +3,12 @@ import BaseLayout from './BaseLayout.astro';
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout title={frontmatter.title}>
   <article class="flex flex-col gap-2">
     <h1 class="text-main text-2xl">
       {frontmatter.title}
     </h1>
-    <p>{frontmatter.pubDate.toString().slice(0, 15)}</p>
+    <p>{frontmatter.date.toString().slice(0, 15)}</p>
 
     <div class="flex flex-row gap-2">
       <p>Tags:</p>

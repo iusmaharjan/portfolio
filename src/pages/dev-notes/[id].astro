@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import MarkdownPostLayout from '@layouts/MarkdownPostLayout.astro';
+import Prose from '@components/Prose.astro';
+
+export async function getStaticPaths() {
+  const devNotes = await getCollection('devnotes');
+  return devNotes.map((note) => ({
+    params: { id: note.id },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+---
+
+<MarkdownPostLayout frontmatter={note.data}>
+  <Prose>
+    <Content />
+  </Prose>
+</MarkdownPostLayout>

@@ -15,7 +15,10 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Download Dev Notes
-        run: git clone https://github.com/iusmaharjan/dev-notes.git
+        uses: actions/checkout@v4
+        with:
+          repository: iusmaharjan/dev-notes
+          path: dev-notes
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}

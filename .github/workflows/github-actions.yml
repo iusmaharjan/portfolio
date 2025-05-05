@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+      - name: Download Dev Notes
+        run: git clone https://github.com/iusmaharjan/dev-notes.git
       - name: Build and Upload
         uses: withastro/action@v3
   deploy:

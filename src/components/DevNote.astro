@@ -1,16 +1,31 @@
 ---
-const { url, title, description } = Astro.props;
+import { format } from 'date-fns';
+const { url, title, description, date, tags } = Astro.props;
+const formattedDate = format(date, 'MMMM d, yyyy');
 ---
 
 <li>
   <a href={url}>
-    <div class="order-b flex flex-col border-b py-8">
-      <h1 class="text-main mb-2 text-xl md:text-lg">
+    <article class="flex flex-col gap-4 border-b py-8">
+      <h1 class="text-4xl text-neutral-100 md:text-2xl">
         {title}
       </h1>
-      <p class="text-main text-xl md:text-base">
+      <p class="text-2xl font-light text-neutral-200 md:text-lg">
         {description}
       </p>
-    </div>
+      <p class="text-md font-light text-neutral-200 italic">
+        Published on {formattedDate}
+      </p>
+      <p class="flex gap-2">
+        <span class="text-neutral-100">Tags:</span>
+        {
+          tags.map((tag: string) => (
+            <span class="rounded-md border px-2 text-sm text-neutral-100">
+              {tag}
+            </span>
+          ))
+        }
+      </p>
+    </article>
   </a>
 </li>
